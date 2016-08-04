@@ -1,6 +1,8 @@
 // webpack.config.js
-var path = require('path')
+var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 console.log(__dirname);
 module.exports = {
@@ -22,8 +24,12 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name : ['swiper'],//将公共模块提取
-      minChunks : Infinity //提取素有entry共同依赖的模块
+      minChunks : Infinity //提取所有entry共同依赖的模块
+    }),
+    new HtmlWebpackPlugin({
+      title : "my app"
     })
+
   ],
   module: {
     loaders: [
